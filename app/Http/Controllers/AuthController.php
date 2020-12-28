@@ -50,14 +50,19 @@ class AuthController extends Controller
       ]);
 
       $cradentials = $request->except(['_token']);
+      //$cradentials = $request->only('email', 'password');
       if(auth()->attempt($cradentials)){
-        //return redirect()->route('home');
-        echo "OK";
+        return redirect()->route('dashboard');
       }else{
         $this->setErrorMsg('Invalid Users');
         return redirect()->back();
       }
+    }
 
-
+    public function LogOut()
+    {
+      auth()->logout();
+      $this->setSuccessMsg('User hasbeen logout');
+      return redirect()->route('login');
     }
   }
