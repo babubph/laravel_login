@@ -54,15 +54,15 @@ class AuthController extends Controller
       if(auth()->attempt($cradentials)){
         return redirect()->route('dashboard');
       }else{
-        $this->setErrorMsg('Invalid Users');
-        return redirect()->back();
+        $this->setErrorMsg('Invalid users | Access Denied');
+        return redirect()->route('login');
       }
     }
 
     public function LogOut()
     {
       auth()->logout();
-      $this->setSuccessMsg('User hasbeen logout');
+      $this->setSuccessMsg('Logout Successfully');
       return redirect()->route('login');
     }
   }
