@@ -11,10 +11,7 @@ class AuthController extends Controller
     return view('admin.login.login');
   }
 
-  public function UsersForm(){
-    return view('admin.login.user_form');
-  }
-
+  
   public function ForgetPassword(){
     return view('admin.login.forget_password');
   }
@@ -29,14 +26,15 @@ class AuthController extends Controller
 
       $data=[
         'name' => $request->input('name'),
-        'email' => strtolower($request->input('email')),
+        'email' => strtolower(trim($request->input('email'))),
         'contact' => $request->input('contact'),
         'password' => bcrypt($request->input('password')),
+        'status' => 1,
       ];
       try {
         User:: create($data);
         $this->setSuccessMsg('User Account Created');
-        return redirect()->route('login');
+        return redirect()->route('new-users');
       } catch(Exception $e){
         $this->setErrorMsg($e->getMessage());
         return redirect()->back();

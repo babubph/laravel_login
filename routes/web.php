@@ -16,10 +16,11 @@ Route::middleware(['auth'])->group(function () {
   Route::match(['get', 'post'],'logout', [AuthController::class, 'LogOut'])->name('logout');
   //Route::get('logout', [AuthController::class, 'LogOut'])->name('logout');
   Route::get('forget-password', [AuthController::class, 'ForgetPassword'])->name('forget-password');
-  Route::get('reg', [AuthController::class, 'UsersForm'])->name('reg');
   Route::post('insert-user', [AuthController::class, 'InsertUser']);
 
   Route::get('dashboard', [AdminController::class, 'Dashboard'])->name('dashboard');
   Route::get('new-users', [AdminController::class, 'NewUsers_form'])->name('new-users');
   Route::get('all-users', [AdminController::class, 'getUsers'])->name('all-users');
+  Route::put('edit-user/{id}', [AdminController::class, 'EditUser'])->name('edit-user');
+  Route::delete('delete-user/{id}', [AdminController::class, 'DeleteUser'])->name('delete-user');
 });
