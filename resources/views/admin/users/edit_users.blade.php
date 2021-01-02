@@ -31,32 +31,34 @@
       @endif
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Create New User</h3>
+                <h3 class="card-title">Edit User</h3>
                 <div class="card-tools">
                   <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
+                  <a href="{{ route('new-users') }}" class="btn btn-info btn-sm"><i class="fa fa-key"></i> Change Password</a>
                 </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{ url('insert-user') }}" method="post">
+              <form class="form-horizontal" action="{{ route('update-user', $user->id) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-5">
-                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="inputEmail3">
+                      <input type="text" name="name" class="form-control" value="{{ $user->name }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-5">
-                      <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="inputEmail3">
+                      <input type="email" name="email" class="form-control" value="{{ $user->email }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Contact</label>
                     <div class="col-sm-5">
-                      <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" id="inputEmail3">
+                      <input type="text" name="contact" class="form-control" value="{{ $user->contact }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -69,29 +71,6 @@
                     </div>
                   </div>
 
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-4">
-                      <input type="password" class="form-control" name="password" autocomplete="off">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-4">
-                      <input type="password" class="form-control" name="confirm_password" autocomplete="off">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
-                    <div class="col-sm-5">
-                      <div class="custom-control custom-checkbox">
-                        <input name="status" class="custom-control-input custom-control-input-danger" type="checkbox" value="1" id="customCheckbox4" checked>
-                        <label for="customCheckbox4" class="custom-control-label">Active</label>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -99,7 +78,7 @@
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-5">
-                      <button type="submit" class="btn btn-info float-left">Submit</button>
+                      <button type="submit" class="btn btn-warning float-left">Update</button>
                     </div>
                   </div>
                 </div>
@@ -110,7 +89,6 @@
       </div>
       </div>
 </section>
-
 @endsection
 
 

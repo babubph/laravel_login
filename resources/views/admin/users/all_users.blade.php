@@ -21,8 +21,7 @@
     @endif
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">All Users</h3>
-
+        <div><h3 class="card-title">All Users</h3></div>
         <div class="card-tools">
 
           <a href="{{ route('new-users') }}" class="btn btn-success btn-sm">Add New</a>
@@ -37,6 +36,7 @@
               <th>User Name</th>
               <th>Email</th>
               <th>Contact</th>
+              <th>User Type</th>
               <th>Status</th>
               <th class="text-right">Action</th>
             </tr>
@@ -49,12 +49,21 @@
               <td>{{ $users->name }}</td>
               <td>{{ $users->email }}</td>
               <td>{{ $users->contact }}</td>
+              <td>Admin</td>
               <!-- <td>{{ $users->status == 1 ? 'Active' : 'Inactive' }}</td> -->
               <td>
                 @if ($users->status == 1)
-                    <a class="btn btn-success btn-sm">Active</button>
+                  <form action="{{ route('user-inactive', $users->id) }}" method="post">
+                      @csrf
+                      @method('PUT')
+                      <button type="submit" class="btn btn-success btn-sm">Active</button>
+                  </form>
                 @else
-                    <a class="btn btn-danger btn-sm">Inactive</button>
+                      <form action="{{ route('user-active', $users->id) }}" method="post">
+                          @csrf
+                          @method('PUT')
+                          <button type="submit" class="btn btn-danger btn-sm">Inactive</button>
+                      </form>
                 @endif
               </td>
               <td class="text-right">
@@ -74,7 +83,9 @@
               </td>
             </tr>
             @endforeach
-
+            <tr>
+              <td colspan="6"><div>Total user:  {{ $user->count() }}</div></th>
+            </tr>
           </tbody>
         </table>
       </div>

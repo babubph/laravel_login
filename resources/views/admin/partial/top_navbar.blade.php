@@ -6,7 +6,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index3.html" class="nav-link">Home</a>
+      <a href="{{ url('dashboard') }}" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>
@@ -122,7 +122,11 @@
           All Users
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="{{ url('users-log') }}" class="dropdown-item">
+           Users Log
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="{{ route('app-settings') }}" class="dropdown-item">
           App Settings
         </a>
         <div class="dropdown-divider"></div>

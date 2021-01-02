@@ -11,16 +11,22 @@ use App\Http\Controllers\AdminController;
 //Route::get('contact', [FrontController::class, 'Contact']);
 Route::get('login', [AuthController::class, 'LoginForm'])->name('login');
 Route::post('check-login', [AuthController::class, 'LoginProccess']);
+Route::get('forget-password', [AuthController::class, 'ForgetPassword'])->name('forget-password');
 
 Route::middleware(['auth'])->group(function () {
   Route::match(['get', 'post'],'logout', [AuthController::class, 'LogOut'])->name('logout');
   //Route::get('logout', [AuthController::class, 'LogOut'])->name('logout');
-  Route::get('forget-password', [AuthController::class, 'ForgetPassword'])->name('forget-password');
-  Route::post('insert-user', [AuthController::class, 'InsertUser']);
 
-  Route::get('dashboard', [AdminController::class, 'Dashboard'])->name('dashboard');
-  Route::get('new-users', [AdminController::class, 'NewUsers_form'])->name('new-users');
-  Route::get('all-users', [AdminController::class, 'getUsers'])->name('all-users');
-  Route::put('edit-user/{id}', [AdminController::class, 'EditUser'])->name('edit-user');
-  Route::delete('delete-user/{id}', [AdminController::class, 'DeleteUser'])->name('delete-user');
+  Route::post('insert-user', [AuthController::class, 'InsertUser']);
+  Route::get('dashboard', [AuthController::class, 'Dashboard'])->name('dashboard');
+  Route::get('new-users', [AuthController::class, 'NewUsers_form'])->name('new-users');
+  Route::get('all-users', [AuthController::class, 'getUsers'])->name('all-users');
+  Route::get('edit-user/{id}', [AuthController::class, 'EditUser'])->name('edit-user');
+  Route::put('update-user/{id}', [AuthController::class, 'UpdateUser'])->name('update-user');
+  Route::put('user-active/{id}', [AuthController::class, 'UserActive'])->name('user-active');
+  Route::put('user-inactive/{id}', [AuthController::class, 'UserInActive'])->name('user-inactive');
+  Route::delete('delete-user/{id}', [AuthController::class, 'DeleteUser'])->name('delete-user');
+
+  Route::get('app-settings', [AdminController::class, 'AppSettingsForm'])->name('app-settings');
+  Route::put('update-app-settings', [AdminController::class, 'UpdateAppSettings'])->name('update-app-settings');
 });

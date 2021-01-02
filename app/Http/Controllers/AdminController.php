@@ -3,34 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\App_setting;
 
 class AdminController extends Controller
 {
-    public function Dashboard()
-    {
-      return view('admin.dashboard');
-    }
+  // App Settings Form show ---->
+  public function AppSettingsForm()
+  {
+    $data['app']= App_setting::find(1);
+    return view('admin.app_settings_form',$data);
+  }
 
-    public function NewUsers_form()
-    {
-      return view('admin.users.new_users');
-    }
+  // Update App Settings Data ---->
+  public function UpdateAppSettings(Request $request)
+  {
 
-    public function getUsers()
-    {
-      //$data['user']= User::all();
-      //$data['user']= User::select('id', 'name', 'email', 'contact', 'status')->where('status',1)->orderBy('id', 'DESC')->take(10)->get();
-      $data['user']= User::select('id', 'name', 'email', 'contact', 'status')->get();
-      return view('admin.users.all_users', $data);
-    }
+    try {
+      $user = App_setting:: find(1);
+      $user->update([
+        'app_title' => trim($request->input('name')),
+        'email' => strtolower(trim($request->input('email'))),
+        'contact' => $request->input('contact'),
+        'address' => $request->input('address'),
+        'meta_dis' => $request->input('meta_dis'),
+        'meta_keyword' => $request->input('meta_keyword'),
+      ]);
 
-    public function DeleteUser($id)
-    {
-      $user = User::find($id);
-      $user->delete();
+      $imageName = 'app_logo.png';
+      $request->logo_image->move(public_path('images'), $imageName);
 
-      $this->setSuccessMsg('User Delete Successfully');
-      return redirect()->route('all-users');
+      $this->setSuccessMsg('Apps Data Updated');
+      return redirect()->route('app-settings');
+    } catch(Exception $e){
+      $this->setErrorMsg($e->getMessage());
+      return redirect()->back();
     }
+  }
+
+
 }

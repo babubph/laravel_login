@@ -31,64 +31,67 @@
       @endif
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Create New User</h3>
+                <h3 class="card-title">App Settings</h3>
                 <div class="card-tools">
-                  <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
+                  <a href="{{ route('dashboard') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
                 </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{ url('insert-user') }}" method="post">
+              <form class="form-horizontal" action="{{ route('update-app-settings') }}" method="post"  enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">App Name</label>
                     <div class="col-sm-5">
-                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="inputEmail3">
+                      <input type="text" name="name" class="form-control" value="{{ $app->app_title }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-5">
-                      <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="inputEmail3">
+                      <input type="email" name="email" class="form-control" value="{{ $app->email }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Contact</label>
                     <div class="col-sm-5">
-                      <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" id="inputEmail3">
+                      <input type="text" name="contact" class="form-control" value="{{ $app->contact }}" id="inputEmail3">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">User Type</label>
-                    <div class="col-sm-3">
-                      <select  class="form-control" name="user_type" id="user_type">
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-4">
-                      <input type="password" class="form-control" name="password" autocomplete="off">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-5">
+                      <textarea name="address" class="form-control" row="4">{{ $app->address }}</textarea>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-4">
-                      <input type="password" class="form-control" name="confirm_password" autocomplete="off">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Meta Description</label>
+                    <div class="col-sm-5">
+                      <textarea name="meta_dis" class="form-control" row="4">{{ $app->meta_dis }}</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Keyword</label>
+                    <div class="col-sm-5">
+                      <textarea name="meta_keyword" class="form-control" row="4">{{ $app->meta_keyword }}</textarea>
                     </div>
                   </div>
 
                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Logo</label>
+                    <div class="col-sm-5">
+                      <div style="margin-top:15px; ">
+                         <img src="{{ asset('images/app_logo.png') }}" width="180" id="output">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" style="padding-top:15px;">
                     <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-5">
-                      <div class="custom-control custom-checkbox">
-                        <input name="status" class="custom-control-input custom-control-input-danger" type="checkbox" value="1" id="customCheckbox4" checked>
-                        <label for="customCheckbox4" class="custom-control-label">Active</label>
-                      </div>
+                      <input type = "file" name = "logo_image"  accept="image/*" onchange="loadFile(event)"/>
                     </div>
                   </div>
 
@@ -110,6 +113,17 @@
       </div>
       </div>
 </section>
+
+<script>
+  var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+</script>
 
 @endsection
 

@@ -80,9 +80,7 @@
       <p class="mb-1">
         <a href="{{ url('forget-password') }}">I forgot my password</a>
       </p>
-      <p class="mb-0">
-        <a href="{{ url('reg') }}" class="text-center">Register a new membership</a>
-      </p>
+    
     </div>
     <!-- /.card-body -->
   </div>
