@@ -122,7 +122,7 @@
           All Users
         </a>
         <div class="dropdown-divider"></div>
-        <a href="{{ url('users-log') }}" class="dropdown-item">
+        <a href="{{ route('users_log') }}" class="dropdown-item">
            Users Log
         </a>
         <div class="dropdown-divider"></div>

@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="{{ url('dashboard') }}" class="brand-link">
-    <span class="brand-text font-weight-light">Admin Panel</span>
+    <span class="brand-text font-weight-light">Admin Panel- {{ $app->app_title }}</span>
   </a>
 
   <!-- Sidebar -->

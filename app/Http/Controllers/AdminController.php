@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\App_setting;
+use App\Models\User_log;
+
 
 class AdminController extends Controller
 {
@@ -38,6 +40,14 @@ class AdminController extends Controller
       $this->setErrorMsg($e->getMessage());
       return redirect()->back();
     }
+  }
+
+  // Get All User Logs ---->
+  public function getUsersLog()
+  {
+    $data['log']= User_log::all();
+    $data['app']= App_setting::find(1);
+    return view('admin.users.user_logs',$data);
   }
 
 

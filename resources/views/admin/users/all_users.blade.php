@@ -20,11 +20,10 @@
       <div class="alert alert-{{ session('msg_type') }}">{{ session('massage') }}</div>
     @endif
     <div class="card">
-      <div class="card-header">
-        <div><h3 class="card-title">All Users</h3></div>
+      <div class="card-header"  style="background-color:#343A40; color:#FFF;">
+        <div><h3 class="card-title"><i class="fa fa-user"></i>&nbsp; ALL USERS</h3></div>
         <div class="card-tools">
-
-          <a href="{{ route('new-users') }}" class="btn btn-success btn-sm">Add New</a>
+          <a href="{{ route('new-users') }}" class="btn btn-success btn-sm"><i class="fa fa-plus-square"></i>&nbsp; Add New</a>
         </div>
       </div>
       <!-- /.card-header -->
@@ -56,13 +55,13 @@
                   <form action="{{ route('user-inactive', $users->id) }}" method="post">
                       @csrf
                       @method('PUT')
-                      <button type="submit" class="btn btn-success btn-sm">Active</button>
+                      <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp; Active</button>
                   </form>
                 @else
                       <form action="{{ route('user-active', $users->id) }}" method="post">
                           @csrf
                           @method('PUT')
-                          <button type="submit" class="btn btn-danger btn-sm">Inactive</button>
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp; Inactive</button>
                       </form>
                 @endif
               </td>
@@ -84,7 +83,7 @@
             </tr>
             @endforeach
             <tr>
-              <td colspan="6"><div>Total user:  {{ $user->count() }}</div></th>
+              <td colspan="7"><div>Total user: <b> {{ $user->count() }}</b> user</div></th>
             </tr>
           </tbody>
         </table>

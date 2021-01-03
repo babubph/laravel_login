@@ -30,8 +30,8 @@
         <div class="alert alert-{{ session('msg_type') }}">{{ session('massage') }}</div>
       @endif
            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Edit User</h3>
+              <div class="card-header"  style="background-color:#343A40; color:#FFF;">
+                <h3 class="card-title"><i class="fa fa-user"></i>&nbsp; Edit User</h3>
                 <div class="card-tools">
                   <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
                   <a href="{{ route('password-change', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-key"></i> Change Password</a>

@@ -4,20 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\UserSystemInfoHelper;
 use App\Models\User;
 use App\Models\User_log;
+use App\Models\App_setting;
 
 class AuthController extends Controller
 {
 
   // Show Login Form ---->
   public function LoginForm(){
-    return view('admin.login.login');
+    $data['app']= App_setting::find(1);
+    return view('admin.login.login',$data);
   }
 
   // Forget Password form ---->
   public function ForgetPassword(){
-    return view('admin.login.forget_password');
+    $data['app']= App_setting::find(1);
+    return view('admin.login.forget_password',$data);
   }
 
   // Create A new User ---->
@@ -61,20 +65,19 @@ class AuthController extends Controller
           'password' => $request->password,
           'status' => 1,
         ])) {
-          $aa=$request->email;
-          $user=User::query()->where('email', 'LIKE', "%{$aa}%")->get();
-          echo $user->id;
-          exit();
+          $email=$request->email;
+          $user=User::query()->where('email', 'LIKE', "%{$email}%")->get();
 
+          // get Browser Data
           $data=[
-            'user_id' => '52',
-            'user_ip' => '252.265.325.25',
-            'browser' => 'fgdfg',
-            'browser_version' => 'dfg',
-            'os' => 'dfgfd',
-            'date_time' => 'dfgfg',
+            'user_id' => $user[0]->id,
+            'user_ip' => UserSystemInfoHelper::get_ip(),
+            'browser' => UserSystemInfoHelper::get_browsers(),
+            'device_name' => UserSystemInfoHelper::get_device(),
+            'os' => UserSystemInfoHelper::get_os(),
           ];
           User_log:: create($data);
+
           return redirect()->route('dashboard');
       }else{
         $this->setErrorMsg('Invalid users | Access Denied');
@@ -93,13 +96,15 @@ class AuthController extends Controller
     // Dashboard ---->
     public function Dashboard()
     {
-      return view('admin.dashboard');
+      $data['app']= App_setting::find(1);
+      return view('admin.dashboard',$data);
     }
 
     // New User Form ---->
     public function NewUsers_form()
     {
-      return view('admin.users.new_users');
+      $data['app']= App_setting::find(1);
+      return view('admin.users.new_users',$data);
     }
 
     // get All user Data ---->
@@ -108,6 +113,7 @@ class AuthController extends Controller
       //$data['user']= User::all();
       //$data['user']= User::select('id', 'name', 'email', 'contact', 'status')->where('status',1)->orderBy('id', 'DESC')->take(10)->get();
       $data['user']= User::select('id', 'name', 'email', 'contact', 'status')->get();
+      $data['app']= App_setting::find(1);
       return view('admin.users.all_users', $data);
     }
 
@@ -125,6 +131,7 @@ class AuthController extends Controller
     public function EditUser($id)
     {
       $data['user']= User::find($id);
+      $data['app']= App_setting::find(1);
       return view('admin.users.edit_users',$data);
     }
 
@@ -171,6 +178,7 @@ class AuthController extends Controller
     // Passwor Change Form ---->
     public function PasswordChange($id)
     {
+      $data['app']= App_setting::find(1);
       $data['user'] = User:: find($id);
       return view('admin.users.password_change',$data);
     }

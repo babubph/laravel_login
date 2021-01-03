@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class User_log extends Model
 {
     use HasFactory;
@@ -13,8 +14,10 @@ class User_log extends Model
         'user_id',
         'user_ip',
         'browser',
-        'browser_version',
+        'device_name',
         'os',
-        'date_time',
+        'created_at',
     ];
+
+
 }
