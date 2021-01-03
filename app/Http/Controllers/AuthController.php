@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\User_log;
 
 class AuthController extends Controller
 {
@@ -60,7 +61,21 @@ class AuthController extends Controller
           'password' => $request->password,
           'status' => 1,
         ])) {
-        return redirect()->route('dashboard');
+          $aa=$request->email;
+          $user=User::query()->where('email', 'LIKE', "%{$aa}%")->get();
+          echo $user->id;
+          exit();
+
+          $data=[
+            'user_id' => '52',
+            'user_ip' => '252.265.325.25',
+            'browser' => 'fgdfg',
+            'browser_version' => 'dfg',
+            'os' => 'dfgfd',
+            'date_time' => 'dfgfg',
+          ];
+          User_log:: create($data);
+          return redirect()->route('dashboard');
       }else{
         $this->setErrorMsg('Invalid users | Access Denied');
         return redirect()->route('login');
@@ -152,4 +167,34 @@ class AuthController extends Controller
       ]);
       return redirect()->route('all-users');
     }
+
+    // Passwor Change Form ---->
+    public function PasswordChange($id)
+    {
+      $data['user'] = User:: find($id);
+      return view('admin.users.password_change',$data);
+    }
+
+    // Update Password ---->
+    public function UpdatePassword($id, Request $request)
+    {
+      $this->validate($request, [
+        'password' => 'min:6|required_with:confirm_password|same:confirm_password',
+        'confirm_password' => 'min:6'
+      ]);
+
+      try {
+        $user = User:: find($id);
+        $user->update([
+          'password' => bcrypt($request->input('password')),
+        ]);
+        $this->setSuccessMsg('Password Updated');
+        return redirect()->route('password-change',$id);
+      } catch(Exception $e){
+        $this->setErrorMsg($e->getMessage());
+        return redirect()->back();
+      }
+
+    }
+
   }

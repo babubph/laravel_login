@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
   Route::put('user-active/{id}', [AuthController::class, 'UserActive'])->name('user-active');
   Route::put('user-inactive/{id}', [AuthController::class, 'UserInActive'])->name('user-inactive');
   Route::delete('delete-user/{id}', [AuthController::class, 'DeleteUser'])->name('delete-user');
+  Route::get('password-change/{id}', [AuthController::class, 'PasswordChange'])->name('password-change');
+  Route::put('update-password/{id}', [AuthController::class, 'UpdatePassword'])->name('update-password');
 
   Route::get('app-settings', [AdminController::class, 'AppSettingsForm'])->name('app-settings');
   Route::put('update-app-settings', [AdminController::class, 'UpdateAppSettings'])->name('update-app-settings');
