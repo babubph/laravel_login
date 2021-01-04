@@ -32,7 +32,9 @@ class AdminController extends Controller
       ]);
 
       $imageName = 'app_logo.png';
+      if(!empty($request->logo_image)){
       $request->logo_image->move(public_path('images'), $imageName);
+      }
 
       $this->setSuccessMsg('Apps Data Updated');
       return redirect()->route('app-settings');

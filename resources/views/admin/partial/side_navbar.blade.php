@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="{{ url('dashboard') }}" class="brand-link">
-    <span class="brand-text font-weight-light">Admin Panel- {{ $app->app_title }}</span>
+  <a href="{{ url('dashboard') }}" class="brand-link"  style="text-align:center;">
+    <span class="brand-text font-weight-light"><b>Admin Panel</b>- {{ $app->app_title }}</span>
   </a>
 
   <!-- Sidebar -->
@@ -19,71 +19,35 @@
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Widgets
-              <span class="right badge badge-danger">New</span>
-            </p>
-          </a>
-        </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-              Layout Options
-              <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">6</span>
-            </p>
+            <i class="nav-icon fas fa-user"></i>
+            <p>HR Manage <i class="fas fa-angle-left right"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="pages/layout/top-nav.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Top Navigation</p>
+                <p>Add New Employee</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Top Navigation + Sidebar</p>
+                <p>Manage All Employee</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/layout/boxed.html" class="nav-link">
+              <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Boxed</p>
+                <p>Employee Attendance</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+              <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Sidebar</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Sidebar <small>+ Custom Area</small></p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Navbar</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-footer.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Footer</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Collapsed Sidebar</p>
+                <p>Attendance Report</p>
               </a>
             </li>
           </ul>
@@ -92,7 +56,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-              Charts
+              Accounts
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -100,7 +64,7 @@
             <li class="nav-item">
               <a href="pages/charts/chartjs.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>ChartJS</p>
+                <p>A/C Heads</p>
               </a>
             </li>
             <li class="nav-item">
