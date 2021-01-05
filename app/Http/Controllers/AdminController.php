@@ -9,6 +9,13 @@ use App\Models\User_log;
 
 class AdminController extends Controller
 {
+  // User Profile show ---->
+  public function getUsersProfile()
+  {
+    $data['app']= App_setting::find(1);
+    return view('admin.users.user_profile',$data);
+  }
+
   // App Settings Form show ---->
   public function AppSettingsForm()
   {
@@ -47,7 +54,8 @@ class AdminController extends Controller
   // Get All User Logs ---->
   public function getUsersLog()
   {
-    $data['log']= User_log::all();
+    //$data['log']= User_log::all();
+    $data['log']= User_log::select('id', 'user_id', 'user_ip', 'browser', 'device_name', 'os', 'created_at')->orderBy('created_at', 'DESC')->paginate(8);
     $data['app']= App_setting::find(1);
     return view('admin.users.user_logs',$data);
   }

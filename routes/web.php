@@ -32,4 +32,5 @@ Route::middleware(['auth'])->group(function () {
   Route::get('app-settings', [AdminController::class, 'AppSettingsForm'])->name('app-settings');
   Route::put('update-app-settings', [AdminController::class, 'UpdateAppSettings'])->name('update-app-settings');
   Route::get('users_log', [AdminController::class, 'getUsersLog'])->name('users_log');
+  Route::get('user-profile', [AdminController::class, 'getUsersProfile'])->name('user-profile');
 });

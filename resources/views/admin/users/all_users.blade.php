@@ -45,7 +45,7 @@
             @foreach ($user as $users)
             <tr>
               <td>{{$loop->iteration}}</td>
-              <td>{{ $users->name }}</td>
+              <td><div style="color:#138496;"><b>{{ $users->name }}</b></div></td>
               <td>{{ $users->email }}</td>
               <td>{{ $users->contact }}</td>
               <td>Admin</td>

@@ -28,7 +28,7 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+            <img src="{{ asset('admin_lte/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 Brad Diesel
@@ -44,7 +44,7 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+            <img src="{{ asset('admin_lte/dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 John Pierce
@@ -60,7 +60,7 @@
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+            <img src="{{ asset('admin_lte/dist/img/user3-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
             <div class="media-body">
               <h3 class="dropdown-item-title">
                 Nora Silvester
@@ -106,7 +106,7 @@
     @auth()
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <img src="{{ asset('admin_lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-1" height="30" alt="User Image">
+        <img src="{{ asset('images/avatar/male.jpg') }}" class="img-circle elevation-1" height="30" alt="User Image">
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="text-align:right;">
         <div style="padding:15px; text-align:center; background-color:#17A2B8; color:#FFFFFF;">
@@ -114,7 +114,7 @@
           <div>{{ optional(auth())->user()->email }}</div>
         </div>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
+        <a href="{{ url('user-profile') }}" class="dropdown-item">
           User Profile
         </a>
         <div class="dropdown-divider"></div>

@@ -30,11 +30,11 @@
 <div class="wrapper">
 
   @section('header')
-    @include('admin.partial.top_navbar')
+    @include('admin.partials.top_navbar')
   @show
 
   @section('side_navbar')
-    @include('admin.partial.side_navbar')
+    @include('admin.partials.side_navbar')
   @show
 
   <div class="content-wrapper">
@@ -42,7 +42,7 @@
   </div>
 
   @section('footer')
-    @include('admin.partial.footer')
+    @include('admin.partials.footer')
   @show
 
 </div>

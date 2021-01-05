@@ -28,7 +28,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+        <table class="table table-hover text-nowrap table-bordered">
           <thead>
             <tr>
               <th>SL</th>
@@ -44,9 +44,9 @@
           </thead>
           <tbody>
 
-            @foreach ($log as $logs)
+            @foreach ($log as  $key => $logs)
             <tr>
-              <td>{{$loop->iteration}}</td>
+              <td>{{($log->currentpage()-1) * $log->perpage() + $key + 1}}</td>
               <td>{{ $logs->user_id }}</td>
               <td></td>
               <td>{{ $logs->user_ip }}</td>
@@ -60,8 +60,10 @@
 
           </tbody>
         </table>
+
       </div>
       <!-- /.card-body -->
+     <div style="padding:20px;">{{ $log->links('admin.partials.pagination-link') }}</div>
     </div>
     <!-- /.card -->
   </div>
