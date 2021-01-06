@@ -18,7 +18,7 @@ class User_log extends Model
         'os',
         'created_at',
     ];
-    // Reletions
+    // Reletions 1
     public function user()
     {
         return $this->belongsTo(User::class,  'user_id', 'id');
