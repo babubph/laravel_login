@@ -54,8 +54,10 @@ class AdminController extends Controller
   // Get All User Logs ---->
   public function getUsersLog()
   {
-    //$data['log']= User_log::all();
-    $data['log']= User_log::select('id', 'user_id', 'user_ip', 'browser', 'device_name', 'os', 'created_at')->orderBy('created_at', 'DESC')->paginate(8);
+    $data['log'] = User_log::with(['user'])->latest()
+    ->paginate(5);
+    //dd($data);
+    //$data['log']= User_log::select('id', 'user_id', 'user_ip', 'browser', 'device_name', 'os', 'created_at')->orderBy('created_at', 'DESC')->paginate(8);
     $data['app']= App_setting::find(1);
     return view('admin.users.user_logs',$data);
   }
