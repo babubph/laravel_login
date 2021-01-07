@@ -45,10 +45,19 @@
             @foreach ($user as $users)
             <tr>
               <td>{{$loop->iteration}}</td>
-              <td><div style="color:#138496;"><b>{{ $users->name }}</b></div></td>
+              <td>
+                <div style="color:#138496;">
+                  <b>{{ $users->name }}</b>
+                  @if ($users->id == auth()->user()->id)
+                     &nbsp;&nbsp;<i class="fa fa-user"></i>
+                  @else
+                      <i class=""></i>
+                  @endif
+                </div>
+              </td>
               <td>{{ $users->email }}</td>
               <td>{{ $users->contact }}</td>
-              <td>Admin</td>
+              <td>{{ $users->user_type }}</td>
               <!-- <td>{{ $users->status == 1 ? 'Active' : 'Inactive' }}</td> -->
               <td>
                 @if ($users->status == 1)

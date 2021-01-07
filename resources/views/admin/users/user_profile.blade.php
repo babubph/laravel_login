@@ -31,8 +31,8 @@
                <p class="text-muted text-center">{{ optional(auth()->user())->email }}</p>
                <p class="text-muted text-center">{{ optional(auth()->user())->contact }}</p>
                <div class="text-center">
-                 <a href="#" class="btn btn-info"><b>Edit</b></a>
-                 <a href="#" class="btn btn-info"><b>Follow</b></a>
+                 <a href="{{ route('edit-user', optional(auth()->user())->id) }}" class="btn btn-info btn-xs"><b>Edit</b></a>
+                 <a href="{{ route('password-change', optional(auth()->user())->id) }}" class="btn btn-info btn-xs"><b>Change Password</b></a>
              </div>
              </div>
              <!-- /.card-body -->

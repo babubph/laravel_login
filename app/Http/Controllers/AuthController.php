@@ -38,6 +38,7 @@ class AuthController extends Controller
         'name' => trim($request->input('name')),
         'email' => strtolower(trim($request->input('email'))),
         'contact' => $request->input('contact'),
+        'user_type' => $request->input('user_type'),
         'password' => bcrypt($request->input('password')),
         'status' => $request->input('status') == 1 ? '1' : '0',
       ];
@@ -61,20 +62,21 @@ class AuthController extends Controller
       //$cradentials = $request->except(['_token']);
       //$cradentials = $request->only('email', 'password');
       if (Auth::attempt([
-          'email' => $request->email,
+          'email'    => $request->email,
           'password' => $request->password,
-          'status' => 1,
+          'status'   => 1,
         ])) {
+          // Find User ID via user email
           $email=$request->email;
           $user=User::query()->where('email', 'LIKE', "%{$email}%")->get();
 
           // get Browser Data
           $data=[
-            'user_id' => $user[0]->id,
-            'user_ip' => UserSystemInfoHelper::get_ip(),
-            'browser' => UserSystemInfoHelper::get_browsers(),
+            'user_id'     => $user[0]->id,
+            'user_ip'     => UserSystemInfoHelper::get_ip(),
+            'browser'     => UserSystemInfoHelper::get_browsers(),
             'device_name' => UserSystemInfoHelper::get_device(),
-            'os' => UserSystemInfoHelper::get_os(),
+            'os'          => UserSystemInfoHelper::get_os(),
           ];
           User_log:: create($data);
 
@@ -112,7 +114,7 @@ class AuthController extends Controller
     {
       //$data['user']= User::all();
       //$data['user']= User::select('id', 'name', 'email', 'contact', 'status')->where('status',1)->orderBy('id', 'DESC')->take(10)->get();
-      $data['user']= User::select('id', 'name', 'email', 'contact', 'status')->get();
+      $data['user']= User::select('id', 'name', 'email', 'contact', 'status', 'user_type')->get();
       $data['app']= App_setting::find(1);
       return view('admin.users.all_users', $data);
     }
@@ -138,14 +140,15 @@ class AuthController extends Controller
     // Update user Data ---->
     public function UpdateUser($id, Request $request)
     {
-
       try {
         $user = User:: find($id);
         $user->update([
           'name' => trim($request->input('name')),
           'email' => strtolower(trim($request->input('email'))),
           'contact' => $request->input('contact'),
+          'user_type' => $request->input('user_type'),
         ]);
+
         $this->setSuccessMsg('User Account Updated');
         return redirect()->route('edit-user',$id);
       } catch(Exception $e){

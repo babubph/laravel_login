@@ -33,7 +33,9 @@
               <div class="card-header"  style="background-color:#343A40; color:#FFF;">
                 <h3 class="card-title"><i class="fa fa-user"></i>&nbsp; Edit User</h3>
                 <div class="card-tools">
-                  <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
+                  <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"  style="display:  @if(auth()->user()->user_type == 'User') none @endif ">
+                    <i class="fa fa-arrow-left"></i> Bank
+                  </a>
                   <a href="{{ route('password-change', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-key"></i> Change Password</a>
                 </div>
               </div>
@@ -46,27 +48,27 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-5">
-                      <input type="text" name="name" class="form-control" value="{{ $user->name }}" id="inputEmail3">
+                      <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-5">
-                      <input type="email" name="email" class="form-control" value="{{ $user->email }}" id="inputEmail3">
+                      <input type="email" name="email" class="form-control" value="{{ $user->email }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Contact</label>
                     <div class="col-sm-5">
-                      <input type="text" name="contact" class="form-control" value="{{ $user->contact }}" id="inputEmail3">
+                      <input type="text" name="contact" class="form-control" value="{{ $user->contact }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">User Type</label>
                     <div class="col-sm-3">
                       <select  class="form-control" name="user_type" id="user_type">
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
+                        <option value="Admin" @if ($user->user_type == 'Admin') selected @endif>Admin</option>
+                        <option value="User" @if ($user->user_type == 'User') selected @endif>User</option>
                       </select>
                     </div>
                   </div>

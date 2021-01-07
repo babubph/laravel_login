@@ -117,6 +117,7 @@
         <a href="{{ url('user-profile') }}" class="dropdown-item">
           User Profile
         </a>
+        <div style="display:  @if(auth()->user()->user_type == 'User') none @endif ">
         <div class="dropdown-divider"></div>
         <a href="{{ url('all-users') }}" class="dropdown-item">
           All Users
@@ -129,6 +130,7 @@
         <a href="{{ route('app-settings') }}" class="dropdown-item">
           App Settings
         </a>
+       </div>
         <div class="dropdown-divider"></div>
         <a href="{{ route('logout') }}" class="dropdown-item">
           Logout

@@ -44,19 +44,19 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-5">
-                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="inputEmail3">
+                      <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-5">
-                      <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="inputEmail3">
+                      <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Contact</label>
                     <div class="col-sm-5">
-                      <input type="text" name="contact" class="form-control" value="{{ old('contact') }}" id="inputEmail3">
+                      <input type="text" name="contact" class="form-control" value="{{ old('contact') }}">
                     </div>
                   </div>
                   <div class="form-group row">

@@ -47,7 +47,7 @@
             @foreach ($log as  $key => $logs)
             <tr>
               <td>{{($log->currentpage()-1) * $log->perpage() + $key + 1}}</td>
-              <td>{{ $logs->user->name }}</td>
+              <td><div style="color:#138496;">{{ $logs->user->name }}</b></td>
               <td>{{ $logs->user->email }}</td>
               <td>{{ $logs->user_ip }}</td>
               <td>{{ $logs->browser }}</td>
