@@ -33,7 +33,7 @@
               <div class="card-header"  style="background-color:#343A40; color:#FFF;">
                 <h3 class="card-title"><i class="fa fa-cog"></i> App Settings</h3>
                 <div class="card-tools">
-                  <a href="{{ route('dashboard') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Bank</a>
+                  <a href="{{ route('dashboard') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
                 </div>
               </div>
               <!-- /.card-header -->

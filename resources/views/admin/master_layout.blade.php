@@ -70,11 +70,48 @@
 <script src="{{ asset('admin_lte/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('admin_lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('admin_lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/pdfmake/pdfmake.min.js') }}"></script>
+
+<script src="{{ asset('admin_lte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin_lte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin_lte/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin_lte/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('admin_lte/dist/js/pages/dashboard.js') }}"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "paging": false,
+      "info": false,
+      "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "ordering": true,
+      "buttons": ["csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": false,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": false,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

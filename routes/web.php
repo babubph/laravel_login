@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Supplier;
 //use App\Http\Controllers\FrontController;
 
 
@@ -17,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
   Route::match(['get', 'post'],'logout', [AuthController::class, 'LogOut'])->name('logout');
   //Route::get('logout', [AuthController::class, 'LogOut'])->name('logout');
 
+  // User
   Route::post('insert-user', [AuthController::class, 'InsertUser']);
   Route::get('dashboard', [AuthController::class, 'Dashboard'])->name('dashboard');
   Route::get('new-users', [AuthController::class, 'NewUsers_form'])->name('new-users');
@@ -33,4 +35,9 @@ Route::middleware(['auth'])->group(function () {
   Route::put('update-app-settings', [AdminController::class, 'UpdateAppSettings'])->name('update-app-settings');
   Route::get('users_log', [AdminController::class, 'getUsersLog'])->name('users_log');
   Route::get('user-profile', [AdminController::class, 'getUsersProfile'])->name('user-profile');
+
+  //Supplier
+  Route::get('new-supplier', [Supplier::class, 'newSupplierForm'])->name('new-supplier');
+  Route::post('insert-supplier', [Supplier::class, 'InsertSupplier']);
+  Route::get('all-supplier', [Supplier::class, 'getAllSuppliers'])->name('all-supplier');
 });

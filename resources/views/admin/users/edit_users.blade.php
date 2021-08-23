@@ -34,7 +34,7 @@
                 <h3 class="card-title"><i class="fa fa-user"></i>&nbsp; Edit User</h3>
                 <div class="card-tools">
                   <a href="{{ route('all-users') }}" class="btn btn-success btn-sm"  style="display:  @if(auth()->user()->user_type == 'User') none @endif ">
-                    <i class="fa fa-arrow-left"></i> Bank
+                    <i class="fa fa-arrow-left"></i> Back
                   </a>
                   <a href="{{ route('password-change', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-key"></i> Change Password</a>
                 </div>

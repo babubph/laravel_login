@@ -142,6 +142,17 @@
       }
     }
   }
+
+  .navbar-search-block {
+    .form-control-navbar {
+      &:focus {
+        &,
+        + .input-group-append .btn-navbar {
+          color: $main-header-light-placeholder-color;
+        }
+      }
+    }
+  }
 }
 
 // Navbar Search
@@ -156,20 +167,7 @@
   display: none;
   justify-content: center;
   flex-direction: column;
-
-  @each $color, $value in $theme-colors {
-    @if $color != dark and $color != light {
-      .navbar-#{$color} & {
-        background-color: $value;
-      }
-    }
-  }
-
-  @each $color, $value in $colors {
-    .navbar-#{$color} & {
-      background-color: $value;
-    }
-  }
+  background-color: initial;
 
   &.navbar-search-open {
     display: flex;

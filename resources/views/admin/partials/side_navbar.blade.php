@@ -22,10 +22,10 @@
 
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
+            <i class="nav-icon fas fa-user-tie"></i>
             <p>HR Manage <i class="fas fa-angle-left right"></i></p>
           </a>
-          <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview" style="background-color:#242A2E; font-size:14px;">
             <li class="nav-item">
               <a href="pages/layout/top-nav.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -52,15 +52,89 @@
             </li>
           </ul>
         </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-chart-pie"></i>
+            <i class="nav-icon fas fa-truck"></i>
+            <p>
+              Suppliers
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview"  style="background-color:#242A2E; font-size:14px;">
+            <li class="nav-item">
+              <a href="{{ route('new-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>New Supplier</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('all-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Suppliers</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-box"></i>
+            <p>
+              Products
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview"  style="background-color:#242A2E; font-size:14px;">
+            <li class="nav-item">
+              <a href="{{ route('new-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>New Product</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('all-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Products</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('all-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Product Category</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Customers
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview"  style="background-color:#242A2E; font-size:14px;">
+
+            <li class="nav-item">
+              <a href="{{ route('all-supplier') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Customers</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-dollar-sign"></i>
             <p>
               Accounts
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview" style="background-color:#242A2E; font-size:14px;">
             <li class="nav-item">
               <a href="pages/charts/chartjs.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
